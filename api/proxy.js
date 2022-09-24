@@ -2,12 +2,12 @@
  * @Author: Faith
  * @Date: 2022-09-24 10:53
  * @LastAuthor: Faith
- * @LastEditTime: 2022-09-24 10:54
+ * @LastEditTime: 2022-09-24 11:07
  * @Description:
  */
 
 // 该服务为 vercel serve跨域处理
-const { createProxyMiddleware } = require('http-proxy-middleware')
+import { createProxyMiddleware } from 'http-proxy-middleware'
 
 module.exports = (req, res) => {
   let target = ''
