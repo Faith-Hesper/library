@@ -1,58 +1,86 @@
 <script setup>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import api from '../api'
-
 let data = ref([])
-function getData() {
-  api().then((res) => {
-    let response = res
-    data.value = response.items
-    // console.log(data)
-  })
+let loading = ref(false)
+let zpData = reactive({
+  currentPage: 1,
+  pageSize: 15,
+  totalPage: 1,
+  status: true,
+  layout: 'prev, pager, next, jumper',
+})
+
+function getData(currentPage) {
+  loading.value = true
+  api(currentPage)
+    .then((res) => {
+      data.value = res.items
+      zpData.pageSize = res.pageSize
+      zpData.totalPage = res.totalPage
+    })
+    .finally(() => {
+      loading.value = false
+    })
 }
 
-getData()
+function handleCurrentChange(currentPage) {
+  getData(currentPage)
+}
+
+getData(zpData.currentPage)
 </script>
 
 <template>
-  <div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>公司</th>
-          <th>发布时间</th>
-          <th>招聘职位</th>
-          <th>招聘主题</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in data" :key="item.row_id">
-          <td>
-            <a
-              :href="'http://xsjy.whu.edu.cn/jyxt/sczp/zpztgl/ckZpgwList.zf?dwxxid=' + item.dwxxid"
-              target="_blank"
-              >{{ item.dwmc }}</a
-            >
-          </td>
-          <td>{{ item.fbsj }}</td>
-          <td>{{ item.zwmc }}</td>
-          <td>{{ item.zpzt }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="pagenation">
-      <ul>
-        <li></li>
-      </ul>
-    </div>
+  <div class="inform">
+    <div class="title">求职职位</div>
+    <el-table
+      class="table card"
+      :data="data"
+      max-height="580"
+      v-loading="loading"
+      element-loading-text="Loading..."
+      style="width: 100%"
+    >
+      <el-table-column label="公司" width="180">
+        <template #default="scope">
+          <a
+            :href="
+              'http://xsjy.whu.edu.cn/jyxt/sczp/zpztgl/ckZpgwList.zf?dwxxid=' + scope.row.dwxxid
+            "
+            target="_blank"
+            >{{ scope.row.dwmc }}</a
+          >
+        </template>
+      </el-table-column>
+      <el-table-column prop="zwmc" label="招聘职位" width="180"></el-table-column>
+      <el-table-column prop="zpzt" label="招聘主题" width="180"></el-table-column>
+      <el-table-column prop="fbsj" label="发布时间" width="180"></el-table-column>
+    </el-table>
+    <el-pagination
+      class="pagenation"
+      background
+      :hide-on-single-page="zpData.status"
+      :layout="zpData.layout"
+      :page-size="zpData.pageSize"
+      :page-count="zpData.totalPage"
+      :total="zpData.totalResult"
+      @current-change="handleCurrentChange"
+    />
   </div>
 </template>
 
-<style scoped>
-.read-the-docs {
-  color: #888;
+<style lang="less" scoped>
+.inform {
+  position: relative;
+  .title {
+    font-size: 18px;
+    text-align: center;
+    padding: 5px 0;
+  }
 }
-.table td:nth-child(1) {
-  text-align: left;
+.el-pagination {
+  padding: 5px 0;
+  justify-content: center;
 }
 </style>
