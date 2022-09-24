@@ -2,14 +2,14 @@
  * @Author: Faith
  * @Date: 2022-09-24 10:53
  * @LastAuthor: Faith
- * @LastEditTime: 2022-09-24 11:07
+ * @LastEditTime: 2022-09-24 11:10
  * @Description:
  */
 
 // 该服务为 vercel serve跨域处理
 import { createProxyMiddleware } from 'http-proxy-middleware'
 
-module.exports = (req, res) => {
+export default (req, res) => {
   let target = ''
 
   // 代理目标地址
