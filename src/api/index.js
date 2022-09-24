@@ -2,7 +2,7 @@
  * @Author: Faith
  * @Date: 2022-09-24 09:40
  * @LastAuthor: Faith
- * @LastEditTime: 2022-09-24 18:58
+ * @LastEditTime: 2022-09-24 19:02
  * @Description:
  */
 
@@ -27,7 +27,7 @@ async function api(currentPage = 1) {
     qs.stringify(customData)
   )
 
-  // console.log(data)
+  console.log(data)
   return data
 }
 
@@ -41,7 +41,7 @@ async function excel() {
       responseType: 'json',
     },
   })
-  // console.log(data)
+  console.log(data)
   return data
 }
 export default api
