@@ -30,8 +30,14 @@ export default defineConfig({
         target: 'https://docs.qq.com',
         ws: true,
         changeOrigin: true,
-        secure: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
+        rewrite: (path) => path.replace(/^\/doc/, ''),
+        headers: {
+          Referer:
+            'https://docs.qq.com/resource/sheet/public-worker.0ffd8f13ed8dfcb8ae84.js?lng=zh-CN',
+          Host: 'https://docs.qq.com/sheet/DWmtpVWRlWEVXakpX?tab=BB08J2',
+          Accept: 'application/json',
+        },
       },
     },
   },

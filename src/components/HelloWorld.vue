@@ -29,7 +29,7 @@ function handleCurrentChange(currentPage) {
 }
 
 getData(zpData.currentPage)
-excel()
+// excel()
 </script>
 
 <template>
