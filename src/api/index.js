@@ -2,7 +2,7 @@
  * @Author: Faith
  * @Date: 2022-09-24 09:40
  * @LastAuthor: Faith
- * @LastEditTime: 2022-09-24 14:50
+ * @LastEditTime: 2022-09-24 18:58
  * @Description:
  */
 
@@ -27,8 +27,22 @@ async function api(currentPage = 1) {
     qs.stringify(customData)
   )
 
-  console.log(data)
+  // console.log(data)
   return data
 }
 
+async function excel() {
+  const url =
+    '/doc/dop-api/get/sheet?padId=300000000%24ZkiUdeXEWjJW&subId=BB08J2&startrow=2062&endrow=2258&xsrf=424d7ea16b2c236d&_r=0.8430574967827611&outformat=1&normal=1&preview_token=&nowb=1&enableSmartsheetSplit=1&rev=1933'
+  const { data } = await axios.get(url, {
+    headers: {
+      referer: 'https://docs.qq.com/resource/sheet/public-worker.0ffd8f13ed8dfcb8ae84.js?lng=zh-CN',
+      host: 'https://docs.qq.com/sheet/DWmtpVWRlWEVXakpX?tab=BB08J2',
+      responseType: 'json',
+    },
+  })
+  // console.log(data)
+  return data
+}
 export default api
+export { excel }

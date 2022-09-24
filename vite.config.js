@@ -26,6 +26,13 @@ export default defineConfig({
         secure: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+      '/doc': {
+        target: 'https://docs.qq.com',
+        ws: true,
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
     },
   },
 })

@@ -1,6 +1,6 @@
 <script setup>
 import { reactive, ref } from 'vue'
-import api from '../api'
+import api, { excel } from '../api'
 let data = ref([])
 let loading = ref(false)
 let zpData = reactive({
@@ -29,6 +29,7 @@ function handleCurrentChange(currentPage) {
 }
 
 getData(zpData.currentPage)
+excel()
 </script>
 
 <template>
@@ -40,7 +41,6 @@ getData(zpData.currentPage)
       max-height="580"
       v-loading="loading"
       element-loading-text="Loading..."
-      style="width: 100%"
     >
       <el-table-column label="公司">
         <template #default="scope">

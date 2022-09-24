@@ -1,9 +1,24 @@
 {
+  "headers": [
+    {
+      "source": "/doc/(.*)",
+      "headers" : [
+        {
+          "referer": "https://docs.qq.com/resource/sheet/public-worker.0ffd8f13ed8dfcb8ae84.js?lng=zh-CN",
+          "host": "https://docs.qq.com/sheet/DWmtpVWRlWEVXakpX?tab=BB08J2",
+          "responseType": "json"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
-
       "source": "/api/(.*)",
       "destination": "/api/proxy"
+    },
+    {
+      "source": "/doc/(.*)",
+      "destination": "/api/excel"
     }
   ]
 }
