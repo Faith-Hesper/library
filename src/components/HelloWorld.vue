@@ -42,7 +42,7 @@ getData(zpData.currentPage)
       element-loading-text="Loading..."
       style="width: 100%"
     >
-      <el-table-column label="公司" width="180">
+      <el-table-column label="公司">
         <template #default="scope">
           <a
             :href="
@@ -53,9 +53,9 @@ getData(zpData.currentPage)
           >
         </template>
       </el-table-column>
-      <el-table-column prop="zwmc" label="招聘职位" width="180"></el-table-column>
-      <el-table-column prop="zpzt" label="招聘主题" width="180"></el-table-column>
-      <el-table-column prop="fbsj" label="发布时间" width="180"></el-table-column>
+      <el-table-column prop="zwmc" label="招聘职位"></el-table-column>
+      <el-table-column prop="zpzt" label="招聘主题"></el-table-column>
+      <el-table-column prop="fbsj" label="发布时间"></el-table-column>
     </el-table>
     <el-pagination
       class="pagenation"
