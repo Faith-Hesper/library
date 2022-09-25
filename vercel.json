@@ -2,48 +2,10 @@
   "headers": [
     {
       "source": "/(.*)",
-      "headers" : [
+      "headers": [
         {
           "key": "cache-control",
           "value": "public, max-age=3600, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/api/(.*)",
-      "headers" : [
-        {
-          "key": "referer",
-          "value": "https://docs.qq.com/resource/sheet/public-worker.0ffd8f13ed8dfcb8ae84.js?lng=zh-CN"
-        },
-        {
-          "key": "cache-control",
-          "value": "public, max-age=10, must-revalidate"
-        }
-      ],
-      "has": [
-        {
-            "type": "host",
-            "value": "https://docs.qq.com/sheet/DWmtpVWRlWEVXakpX?tab=BB08J2"
-        }
-      ]
-    },
-    {
-      "source": "/doc/(.*)",
-      "headers" : [
-        {
-          "key": "referer",
-          "value": "https://docs.qq.com/resource/sheet/public-worker.0ffd8f13ed8dfcb8ae84.js?lng=zh-CN"
-        },
-        {
-          "key": "cache-control",
-          "value": "public, max-age=10, must-revalidate"
-        }
-      ],
-      "has": [
-        {
-            "type": "host",
-            "value": "https://docs.qq.com/sheet/DWmtpVWRlWEVXakpX?tab=BB08J2"
         }
       ]
     }
@@ -51,12 +13,35 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/proxy"
+      "destination": "/api/proxy",
+      "has": [
+        {
+          "type": "headers",
+          "key": "cache-control",
+          "value": "public, max-age=10, must-revalidate"
+        }
+      ]
     },
     {
       "source": "/doc/(.*)",
-      "destination": "/api/excel"
+      "destination": "/api/excel",
+      "has": [
+        {
+          "type": "host",
+          "key": "host",
+          "value": "https://docs.qq.com/sheet/DWmtpVWRlWEVXakpX?tab=BB08J2"
+        },
+        {
+          "type": "headers",
+          "key": "referer",
+          "value": "https://docs.qq.com/resource/sheet/public-worker.0ffd8f13ed8dfcb8ae84.js?lng=zh-CN"
+        },
+        {
+          "type": "headers",
+          "key": "cache-control",
+          "value": "public, max-age=10, must-revalidate"
+        }
+      ]
     }
   ]
 }
-
