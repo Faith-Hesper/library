@@ -7,6 +7,7 @@ let zpData = reactive({
   currentPage: 1,
   pageSize: 15,
   totalPage: 1,
+  pagerCount: 5,
   status: true,
   layout: 'prev, pager, next, jumper',
 })
@@ -29,7 +30,7 @@ function handleCurrentChange(currentPage) {
 }
 
 getData(zpData.currentPage)
-// excel()
+excel()
 </script>
 
 <template>
@@ -59,9 +60,11 @@ getData(zpData.currentPage)
     </el-table>
     <el-pagination
       class="pagenation"
+      small
       background
       :hide-on-single-page="zpData.status"
       :layout="zpData.layout"
+      :pager-count="zpData.pagerCount"
       :page-size="zpData.pageSize"
       :page-count="zpData.totalPage"
       :total="zpData.totalResult"
