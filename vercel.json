@@ -1,6 +1,15 @@
 {
   "headers": [
     {
+      "source": "/(.*)",
+      "headers" : [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/api/(.*)",
       "headers" : [
         {
@@ -20,11 +29,21 @@
       ]
     },
     {
-      "source": "/(.*)",
+      "source": "/doc/(.*)",
       "headers" : [
         {
+          "key": "referer",
+          "value": "https://docs.qq.com/resource/sheet/public-worker.0ffd8f13ed8dfcb8ae84.js?lng=zh-CN"
+        },
+        {
           "key": "cache-control",
-          "value": "public, max-age=3600, must-revalidate"
+          "value": "public, max-age=10, must-revalidate"
+        }
+      ],
+      "has": [
+        {
+            "type": "host",
+            "value": "https://docs.qq.com/sheet/DWmtpVWRlWEVXakpX?tab=BB08J2"
         }
       ]
     }
@@ -35,7 +54,7 @@
       "destination": "/api/proxy"
     },
     {
-      "source": "/api/(.*)",
+      "source": "/doc/(.*)",
       "destination": "/api/excel"
     }
   ]
