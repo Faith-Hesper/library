@@ -16,7 +16,7 @@
       "destination": "/api/proxy",
       "has": [
         {
-          "type": "headers",
+          "type": "header",
           "key": "cache-control",
           "value": "public, max-age=10, must-revalidate"
         }
@@ -32,12 +32,12 @@
           "value": "https://docs.qq.com/sheet/DWmtpVWRlWEVXakpX?tab=BB08J2"
         },
         {
-          "type": "headers",
+          "type": "header",
           "key": "referer",
           "value": "https://docs.qq.com/resource/sheet/public-worker.0ffd8f13ed8dfcb8ae84.js?lng=zh-CN"
         },
         {
-          "type": "headers",
+          "type": "header",
           "key": "cache-control",
           "value": "public, max-age=10, must-revalidate"
         }
