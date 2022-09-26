@@ -2,7 +2,7 @@
  * @Author: Faith
  * @Date: 2022-09-24 09:40
  * @LastAuthor: Faith
- * @LastEditTime: 2022-09-26 16:16
+ * @LastEditTime: 2022-09-26 16:36
  * @Description:
  */
 
@@ -15,7 +15,7 @@ async function api(
     zwlbdm: ['1004'],
   }
 ) {
-  console.log(arguments)
+  // console.log(arguments)
   const a =
     'send_by_bootstrap_table=true&searchModel.inputType=%7B%22zpzt%22%3A%5B%22%22%5D%2C%22zwmc%22%3A%5B%22%22%5D%2C%22dwmc%22%3A%5B%22%22%5D%7D&searchModel.selectType=%7B%22zwlbdm%22%3A%5B%221004%22%5D%7D&searchModel.dateType=%7B%7D&searchModel.numberType=%7B%7D&searchModel.inputSqlType=0&queryModel.showCount=10&queryModel.currentPage=1'
   const customData = {

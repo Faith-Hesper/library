@@ -44,7 +44,7 @@ watch(checked, (newVal) => {
   getData(zpData.currentPage)
 })
 getData(zpData.currentPage)
-// excel()
+excel()
 </script>
 
 <template>
