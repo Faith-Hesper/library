@@ -2,20 +2,26 @@
  * @Author: Faith
  * @Date: 2022-09-24 09:40
  * @LastAuthor: Faith
- * @LastEditTime: 2022-09-24 19:15
+ * @LastEditTime: 2022-09-26 16:16
  * @Description:
  */
 
 import axios from 'axios'
 import qs from 'qs'
 
-async function api(currentPage = 1) {
+async function api(
+  currentPage = 1,
+  selectType = {
+    zwlbdm: ['1004'],
+  }
+) {
+  console.log(arguments)
   const a =
     'send_by_bootstrap_table=true&searchModel.inputType=%7B%22zpzt%22%3A%5B%22%22%5D%2C%22zwmc%22%3A%5B%22%22%5D%2C%22dwmc%22%3A%5B%22%22%5D%7D&searchModel.selectType=%7B%22zwlbdm%22%3A%5B%221004%22%5D%7D&searchModel.dateType=%7B%7D&searchModel.numberType=%7B%7D&searchModel.inputSqlType=0&queryModel.showCount=10&queryModel.currentPage=1'
   const customData = {
     send_by_bootstrap_table: 'true',
     'searchModel.inputType': "{ zpzt: [''], zwmc: [''], dwmc: [''] }",
-    'searchModel.selectType': "{ zwlbdm: ['1004'] }",
+    'searchModel.selectType': JSON.stringify(selectType),
     'searchModel.dateType': '{}',
     'searchModel.numberType': '{}',
     'searchModel.inputSqlType': 0,
