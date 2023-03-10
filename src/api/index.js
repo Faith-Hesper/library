@@ -2,7 +2,7 @@
  * @Author: Faith
  * @Date: 2022-09-24 09:40
  * @LastAuthor: Faith
- * @LastEditTime: 2022-09-26 16:36
+ * @LastEditTime: 2023-03-10 14:54
  * @Description:
  */
 
@@ -46,5 +46,6 @@ async function excel() {
   console.log(data)
   return data
 }
+
 export default api
 export { excel }

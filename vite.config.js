@@ -39,6 +39,18 @@ export default defineConfig({
           Accept: 'application/json',
         },
       },
+      '/wx': {
+        target: 'https://docs.qq.com',
+        ws: true,
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/doc/, ''),
+        headers: {
+          Referer: 'https://qyapi.weixin.qq.com/cgi-bin',
+          Host: 'https://qyapi.weixin.qq.com/cgi-bin',
+          Accept: 'application/json',
+        },
+      },
     },
   },
 })

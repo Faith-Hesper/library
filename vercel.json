@@ -18,6 +18,16 @@
     {
       "source": "/doc/(.*)",
       "destination": "/api/excel"
+    },
+    {
+      "source": "/wx/(.*)",
+      "destination": "/api/wx"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/msg",
+      "schedule": "0 10 * * *"
     }
   ]
 }
