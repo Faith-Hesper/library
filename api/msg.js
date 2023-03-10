@@ -2,8 +2,8 @@
  * @Author: Faith
  * @Date: 2023-03-10 15:22
  * @LastAuthor: Faith
- * @LastEditTime: 2023-03-10 15:22
- * @Description: 
+ * @LastEditTime: 2023-03-10 15:39
+ * @Description:
  */
 import axios from 'axios'
 
@@ -17,7 +17,8 @@ async function getToken() {
   return data
 }
 
-export default async function sendMsg(req,res) {
+export default async function handler(req, res) {
+  res.send('dataD')
   const token = await getToken()
   const msg = 'jo'
   const url = `/wx/message/send?access_token=${token}`
@@ -32,5 +33,5 @@ export default async function sendMsg(req,res) {
     },
   })
   console.log(data)
-  res.status(200).end(data);
+  return res.send(data)
 }
